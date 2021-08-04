@@ -6,6 +6,12 @@ const db = require("./config/db") //this calls the db function
 db()
 app.use(express.json()); //middleware
 app.use('/api/user', userRoute) //middleware to define the user router
+//using ngrok
+const ngrok = require ('ngrok');
+(async function(){
+  const url = await ngrok.connect(7000);
+  console.log(url)
+})();
 
 app.get('/', (req, res) => {
   res.send('Welcome to my API!')
